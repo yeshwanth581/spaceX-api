@@ -1,0 +1,57 @@
+swagger: "2.0"
+info:
+  description: "SpaceX common API call to get all data or query paginated data."
+  version: "1.0.0"
+  title: "SpaceX GET calls"
+host: "localhost:3000"
+schemes:
+- "https"
+- "http"
+paths:
+  /spaceX/getSpaceXData:
+    get:
+      tags:
+      - "spaceX"
+      summary: "Get data based on category"
+      operationId: "getSpaceXData"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "category"
+        in: "query"
+        description: "Category of the speceX items"
+        required: true
+        type: "string"
+        default: "crew"
+      - name: "id"
+        in: "query"
+        description: "Id of the selected item"
+        required: false
+        type: "string"
+      - name: "pageNum"
+        in: "query"
+        description: "page number of the queried data"
+        required: false
+        type: "string"
+      - name: "limit"
+        in: "query"
+        description: "no of items per request"
+        required: false
+        type: "number"
+      - name: "sortBy"
+        in: "query"
+        description: "sort the data by key"
+        required: false
+        type: "string"
+      - name: "order"
+        in: "query"
+        description: "sort order the data- asc || desc"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid user input params"
+        "500":
+          description: "Internal server error"
